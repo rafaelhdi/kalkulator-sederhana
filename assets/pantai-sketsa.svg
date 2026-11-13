@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <title>Sketsa pantai saat sunset</title>
+    <!-- Penggambaran ulang grup foreground: halo gelap di belakang, garis terang di depan -->
+    <defs>
+        <g id="pantai-depan">
+            <!-- garis horizon -->
+            <path d="M-20 424c200-18 400 16 600 2s400-18 600 2c60 4 120 8 180 2"/>
+            <!-- perahu layar di kejauhan -->
+            <path d="M540 420h120l-30-46h-56z"/>
+            <path d="M612 374v-74"/>
+            <path d="M614 300c34 20 52 44 54 70h-54z"/>
+            <!-- gelombang laut -->
+            <path d="M120 480q28-20 56 0t56 0t56 0t56 0t56 0t56 0"/>
+            <path d="M300 528q28-20 56 0t56 0t56 0t56 0t56 0"/>
+            <path d="M80 574q28-20 56 0t56 0t56 0t56 0t56 0t56 0t56 0"/>
+            <!-- garis pantai / pasir -->
+            <path d="M-20 700c180-64 360 40 560 6s420-56 620 4 300 26 340 6"/>
+            <!-- pohon kelapa kiri -->
+            <path d="M200 762c-16-78-8-152 36-214"/>
+            <path d="M236 548c-56-34-108-30-140 4"/>
+            <path d="M236 548c-38-50-92-62-134-46"/>
+            <path d="M236 548c-16-62-56-102-98-114"/>
+            <path d="M236 548c42-46 100-56 142-36"/>
+            <path d="M236 548c26-58 70-94 114-102"/>
+            <path d="M236 548c66-14 114 8 138 46"/>
+            <circle cx="222" cy="560" r="10"/>
+            <circle cx="252" cy="564" r="10"/>
+            <!-- pohon kelapa kanan -->
+            <path d="M1240 782c-14-70-4-140-40-196"/>
+            <path d="M1200 586c-54-30-104-26-134 6"/>
+            <path d="M1200 586c-36-46-88-58-128-44"/>
+            <path d="M1200 586c-14-58-52-96-92-108"/>
+            <path d="M1200 586c40-42 96-52 136-34"/>
+            <path d="M1200 586c24-54 66-88 108-96"/>
+            <path d="M1200 586c62-12 108 8 130 42"/>
+            <circle cx="1186" cy="598" r="10"/>
+            <circle cx="1214" cy="600" r="10"/>
+            <!-- payung pantai -->
+            <path d="M880 636a92 92 0 0 1 184 0"/>
+            <path d="M880 636q23 16 46 0t46 0t46 0t46 0"/>
+            <path d="M972 636v148"/>
+            <!-- orang duduk di bawah payung -->
+            <circle cx="1010" cy="690" r="18"/>
+            <path d="M1010 708c-24 10-36 30-38 54"/>
+            <path d="M972 762c30 10 60 10 84 4"/>
+            <path d="M1010 716l34 18"/>
+            <!-- orang berjalan membawa bola -->
+            <circle cx="1150" cy="600" r="16"/>
+            <path d="M1150 616v48"/>
+            <path d="M1150 630l-24 18"/>
+            <path d="M1150 630l26 14"/>
+            <path d="M1150 664l-18 34"/>
+            <path d="M1150 664l18 34"/>
+            <circle cx="1206" cy="712" r="24"/>
+            <path d="M1182 712h48"/>
+            <path d="M1206 688v48"/>
+            <!-- bintang laut & kerikil -->
+            <path d="M700 664v52"/>
+            <path d="M676 678l48 24"/>
+            <path d="M724 678l-48 24"/>
+            <circle cx="600" cy="736" r="6"/>
+            <circle cx="640" cy="748" r="5"/>
+            <circle cx="556" cy="750" r="5"/>
+        </g>
+    </defs>
+
+    <!-- elemen langit: garis gelap, terbaca di area gradasi terang -->
+    <g stroke="#3f1d0b" stroke-width="4.5" opacity="0.85">
+        <circle cx="1130" cy="150" r="64"/>
+        <path d="M1130 46v-34"/>
+        <path d="M1130 254v34"/>
+        <path d="M1026 150h-34"/>
+        <path d="M1268 150h34"/>
+        <path d="M1057 77l-24-24"/>
+        <path d="M1203 77l24-24"/>
+        <path d="M1057 223l-24 24"/>
+        <path d="M1203 223l24 24"/>
+        <path d="M300 150q21-22 42 0q21-22 42 0"/>
+        <path d="M430 200q18-19 36 0q18-19 36 0"/>
+        <path d="M520 120q16-17 32 0q16-17 32 0"/>
+        <path d="M660 162c-4-22 16-38 36-32c4-18 28-28 44-16c18-10 40 2 40 22c12 2 20 10 20 26"/>
+        <path d="M840 240c-4-18 14-32 30-27c4-15 24-23 37-13c15-9 34 2 34 18c11 2 17 9 17 22"/>
+    </g>
+
+    <!-- elemen depan: halo gelap + garis terang supaya tetap terbaca di gradasi gelap -->
+    <use href="#pantai-depan" stroke="#2b1206" stroke-width="11" opacity="0.55"/>
+    <use href="#pantai-depan" stroke="#fffdf8" stroke-width="4.5" opacity="1"/>
+</svg>

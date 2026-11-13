@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @source "../index.html";
+@source "../js";
 
 @theme {
   --color-cream: #f5f4ee;
