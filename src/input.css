@@ -1,0 +1,19 @@
+@import "tailwindcss";
+@source "../index.html";
+
+@theme {
+  --color-cream: #f5f4ee;
+  --color-ink: #20332b;
+  --color-muted: #65736b;
+  --color-forest: #245e44;
+  --color-forest-dark: #194e36;
+  --color-forest-focus: #568567;
+  --color-line: #e1e5dd;
+  --font-sans: "Segoe UI", Arial, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+}

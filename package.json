@@ -1,0 +1,12 @@
+{
+  "name": "kalkulator-sederhana",
+  "private": true,
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./css/tailwind.css --minify",
+    "watch": "npx @tailwindcss/cli -i ./src/input.css -o ./css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.5",
+    "tailwindcss": "^4.3.5"
+  }
+}

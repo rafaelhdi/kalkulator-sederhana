@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ee">
+    <title>Kalkulator Sederhana</title>
+    <link rel="stylesheet" href="css/tailwind.css">
+</head>
+<body class="min-h-screen bg-cream px-4 py-[22px] min-[421px]:px-6 min-[421px]:py-8 font-sans text-ink">
+    <header class="mx-auto flex max-w-[1080px] items-center justify-between gap-4">
+        <div class="flex items-center gap-2.5 text-[15px] font-[650]">
+            <span class="grid h-7 w-7 place-items-center text-forest" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M8 6h8M8 10h2m4 0h2M8 14h2m4 0h2M8 18h2m4 0h2"/></svg>
+            </span>
+            <span>Kalkulator.</span>
+        </div>
+        <span class="text-[11px] min-[421px]:text-xs text-muted before:mr-[7px] before:inline-block before:h-1.5 before:w-1.5 before:rounded-full before:bg-forest before:content-['']">Bisa dipakai offline</span>
+    </header>
+    <main class="flex min-h-[calc(100vh-140px)] min-[421px]:min-h-[calc(100vh-150px)] items-center justify-center py-8 min-[421px]:py-10">
+        <section class="w-[360px] max-w-full" aria-labelledby="page-title">
+            <div class="mb-6">
+                <p class="m-0 mb-2 text-[11px] font-bold tracking-[1.6px] uppercase text-forest">Hitung sehari-hari</p>
+                <h1 id="page-title" class="m-0 mb-2 text-[27px] min-[421px]:text-[29px] font-[650] tracking-[-1px]">Kalkulator sederhana</h1>
+                <p class="m-0 text-sm leading-[1.6] text-muted">Untuk angka kecil, dan urusan sehari-hari.</p>
+            </div>
+            <div class="rounded-[20px] min-[421px]:rounded-[24px] border border-line bg-white p-4 min-[421px]:p-5 shadow-[0_12px_35px_#20332b0c]" role="group" aria-label="Kalkulator">
+                <div class="screen group mb-[18px] overflow-hidden rounded-[14px] border border-[#e4eade] bg-[#eff3ec] px-[18px] pt-[18px] pb-[12px] text-right [&.has-error]:border-[#efc4b4] [&.has-error]:bg-[#fff4ee]">
+                    <span id="expression" class="block min-h-[22px] truncate text-[13px] leading-[22px] text-muted" aria-label="Operasi saat ini"></span>
+                    <output id="display" class="block min-h-[66px] w-full text-[48px] leading-[66px] font-[550] tracking-[-1.5px] tabular-nums whitespace-nowrap" aria-label="Hasil perhitungan" aria-live="polite" aria-atomic="true">0</output>
+                    <p id="status" class="mt-1 mb-0 min-h-[18px] text-[11px] leading-[18px] text-muted group-[.has-error]:text-[#993719]" role="status">Siap menghitung</p>
+                </div>
+                <div class="keypad grid grid-cols-4 gap-2 min-[421px]:gap-2.5">
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f0f2ed] text-[18px] font-medium text-[#53655a] transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="clear" aria-label="Hapus semua">AC</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f0f2ed] text-[18px] font-medium text-[#53655a] transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="sign" aria-label="Ubah tanda positif atau negatif">±</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f0f2ed] text-[18px] font-medium text-[#53655a] transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="percent" aria-label="Persen, bagi angka dengan seratus">%</button>
+                    <button type="button" class="operator min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e0eadf] bg-[#e8f1e7] text-[25px] font-medium text-forest transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] aria-[pressed=true]:border-forest aria-[pressed=true]:bg-forest aria-[pressed=true]:text-white aria-[pressed=true]:hover:bg-forest motion-reduce:transition-none" data-key="/" aria-label="Bagi" aria-pressed="false">÷</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="7" aria-label="Tujuh">7</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="8" aria-label="Delapan">8</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="9" aria-label="Sembilan">9</button>
+                    <button type="button" class="operator min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e0eadf] bg-[#e8f1e7] text-[25px] font-medium text-forest transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] aria-[pressed=true]:border-forest aria-[pressed=true]:bg-forest aria-[pressed=true]:text-white aria-[pressed=true]:hover:bg-forest motion-reduce:transition-none" data-key="*" aria-label="Kali" aria-pressed="false">×</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="4" aria-label="Empat">4</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="5" aria-label="Lima">5</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="6" aria-label="Enam">6</button>
+                    <button type="button" class="operator min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e0eadf] bg-[#e8f1e7] text-[25px] font-medium text-forest transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] aria-[pressed=true]:border-forest aria-[pressed=true]:bg-forest aria-[pressed=true]:text-white aria-[pressed=true]:hover:bg-forest motion-reduce:transition-none" data-key="-" aria-label="Kurang" aria-pressed="false">−</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="1" aria-label="Satu">1</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="2" aria-label="Dua">2</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="3" aria-label="Tiga">3</button>
+                    <button type="button" class="operator min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e0eadf] bg-[#e8f1e7] text-[25px] font-medium text-forest transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] aria-[pressed=true]:border-forest aria-[pressed=true]:bg-forest aria-[pressed=true]:text-white aria-[pressed=true]:hover:bg-forest motion-reduce:transition-none" data-key="+" aria-label="Tambah" aria-pressed="false">+</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f0f2ed] text-[18px] font-medium text-[#53655a] transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="delete" aria-label="Hapus digit terakhir">⌫</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="0" aria-label="Nol">0</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-[#e9ebe6] bg-[#f9faf7] text-[21px] font-medium text-ink transition-[background-color,transform] duration-[120ms] hover:bg-[#edf0e8] active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="." aria-label="Koma desimal">,</button>
+                    <button type="button" class="min-h-[56px] min-[421px]:min-h-[60px] cursor-pointer touch-manipulation rounded-[12px] border border-forest bg-forest text-[26px] font-medium text-white transition-[background-color,transform] duration-[120ms] hover:bg-forest-dark active:scale-[0.96] focus-visible:outline-[3px] focus-visible:outline-solid focus-visible:outline-forest-focus focus-visible:outline-offset-[3px] motion-reduce:transition-none" data-key="=" aria-label="Hitung hasil">=</button>
+                </div>
+            </div>
+            <p class="mt-5 mb-0 text-center text-xs leading-[1.8] text-muted">Pakai tombol atau keyboard.<br><kbd class="inline-block rounded border border-[#d9dfd4] border-b-2 bg-[#fafaf7] px-[5px] font-sans text-[11px]">Enter</kbd> hasil &nbsp; · &nbsp; <kbd class="inline-block rounded border border-[#d9dfd4] border-b-2 bg-[#fafaf7] px-[5px] font-sans text-[11px]">Esc</kbd> reset &nbsp; · &nbsp; <kbd class="inline-block rounded border border-[#d9dfd4] border-b-2 bg-[#fafaf7] px-[5px] font-sans text-[11px]">⌫</kbd> hapus</p>
+        </section>
+    </main>
+    <footer class="text-center text-[11px] text-muted">HTML + Tailwind CSS + jQuery · Tanpa instalasi, tanpa akun.</footer>
+    <script src="vendor/jquery-3.7.1.min.js"></script>
+    <script>
+        jQuery(function ($) {
+            let current = '0';
+            let first = null;
+            let operator = null;
+            let newNumber = false;
+            let error = '';
+            let expression = '';
+            let lastOperator = null;
+            let lastOperand = null;
+            const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+
+            function render() {
+                const display = $('#display').text(current.replace('.', ',')).css('font-size', '48px');
+                let fontSize = 48;
+                while (display[0].scrollWidth > display[0].clientWidth && fontSize > 16) {
+                    fontSize -= 2;
+                    display.css('font-size', fontSize + 'px');
+                }
+                $('#expression').text(expression);
+                $('.screen').toggleClass('has-error', Boolean(error));
+                $('#status').text(error || (operator ? 'Masukkan angka berikutnya' : 'Siap menghitung'));
+                $('.operator').removeClass('is-active').attr('aria-pressed', 'false');
+                if (operator) {
+                    $('.operator[data-key="' + operator + '"]').addClass('is-active').attr('aria-pressed', 'true');
+                }
+            }
+
+            function reset() {
+                current = '0';
+                first = null;
+                operator = null;
+                newNumber = false;
+                error = '';
+                expression = '';
+                lastOperator = null;
+                lastOperand = null;
+            }
+
+            // Operasi berantai dihitung dari kiri ke kanan, seperti kalkulator biasa.
+            // Tidak memakai eval() agar masukan tidak dieksekusi sebagai kode.
+            function calculate(left, right, operation) {
+                const result = operation === '+' ? left + right
+                    : operation === '-' ? left - right
+                    : operation === '*' ? left * right : left / right;
+                if (!Number.isFinite(result)) {
+                    error = right === 0 && operation === '/'
+                        ? 'Tidak bisa membagi dengan nol.' : 'Hasil di luar batas angka.';
+                    return '0';
+                }
+                // Kurangi artefak floating point, misalnya hasil 0,1 + 0,2.
+                return String(Number(result.toPrecision(12)));
+            }
+
+            $('.keypad').on('click', 'button', function () {
+                const key = $(this).attr('data-key');
+                if (error) reset();
+
+                if (/^\d$/.test(key) || key === '.') {
+                    if (newNumber && !operator) {
+                        expression = '';
+                        lastOperator = null;
+                    }
+                    if (key === '.') {
+                        if (newNumber) current = '0';
+                        if (!current.includes('.')) current += '.';
+                    } else {
+                        if (!newNumber && current.replace(/[^0-9]/g, '').length >= 16) return;
+                        current = newNumber || current === '0' ? key : current + key;
+                    }
+                    newNumber = false;
+                } else if (key === 'sign' || key === 'percent') {
+                    if (newNumber && operator) current = '0';
+                    if (key === 'sign') {
+                        if (Number(current) !== 0) current = current.startsWith('-') ? current.slice(1) : '-' + current;
+                    } else {
+                        current = String(Number((Number(current) / 100).toPrecision(12)));
+                    }
+                    newNumber = false;
+                    lastOperator = null;
+                    if (!operator) expression = '';
+                } else if (key === 'delete') {
+                    if (!newNumber) current = current.slice(0, -1) || '0';
+                    if (current === '-') current = '0';
+                } else if (key === 'clear') {
+                    reset();
+                } else if (['+', '-', '*', '/'].includes(key)) {
+                    if (operator && !newNumber) current = calculate(first, Number(current), operator);
+                    if (error) {
+                        operator = null;
+                    } else {
+                        first = Number(current);
+                        operator = key;
+                        expression = current.replace('.', ',') + ' ' + symbols[key];
+                    }
+                    lastOperator = null;
+                    newNumber = true;
+                } else if (key === '=') {
+                    const operation = operator || lastOperator;
+                    if (operation) {
+                        const left = operator ? first : Number(current);
+                        const right = operator ? Number(current) : lastOperand;
+                        expression = String(left).replace('.', ',') + ' ' + symbols[operation]
+                            + ' ' + String(right).replace('.', ',') + ' =';
+                        current = calculate(left, right, operation);
+                        lastOperator = error ? null : operation;
+                        lastOperand = right;
+                        operator = null;
+                    }
+                    newNumber = true;
+                }
+                render();
+            });
+
+            $(document).on('keydown', function (event) {
+                if (event.ctrlKey || event.metaKey || event.altKey) return;
+                if ($(event.target).is('input, textarea, select, [contenteditable="true"]')) return;
+                // Biarkan Enter/Space pada tombol yang fokus memakai perilaku native.
+                if ($(event.target).is('button') && (event.key === 'Enter' || event.key === ' ')) return;
+                const shortcuts = { Enter: '=', Escape: 'clear', Backspace: 'delete', Delete: 'clear', ',': '.', '%': 'percent' };
+                const key = shortcuts[event.key] || event.key;
+                const button = $('.keypad button').filter(function () {
+                    return $(this).attr('data-key') === key;
+                });
+                if (button.length) {
+                    event.preventDefault();
+                    button.trigger('click');
+                }
+            });
+            render();
+        });
+    </script>
+</body>
+</html>
